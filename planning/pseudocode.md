@@ -7,8 +7,6 @@ blackjack var: holds integer equal to 21, can use it for if checks
 -variable that holds an array for player hand
 -variable that holds array for dealer hand
 -variable that holds array for all cards
--variable that will display current card count for player
--variable that will hold current card count for dealer(maybe)
 -variable that holds winner state
 
 /*<------------CACHED ELEMENTS----------->*/
@@ -17,6 +15,8 @@ reset button: resets game by calling on an initialization function
 evaluation button
 header: most likely to say who wins
 modal: Might be something extra if the player runs out of money to wager(maybe)
+-variable that will display current card count for player
+-variable that will hold current card count for dealer(maybe)
 
 /*<------------EVENT LISTENERS----------->*/
 click event on hit button: will invoke a function to place another number in the playerhand arr and also update the ui with this number added
