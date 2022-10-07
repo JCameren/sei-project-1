@@ -43,26 +43,48 @@ let winner
 init()
 
 function init() {
-    const deck = []
+    wager = 100
+    const cards = []
     SUITS.forEach((suit) => {
         RANKS.forEach((rank) => {
-            deck.push({
+            cards.push(
+                {
                 face: `${suit}${rank}`,
                 //taken from card ui project, Number fn,
-                // built-in JS Fn to parse integers and
-                // show whether it is an int or not(returns boolean)
+
+                // built-in JS Fn to parse integers
                 amount: Number(`${rank}`) || (rank === 'A' ? 11 : 10) //or operator to check if rank holds letter
                 //if rank holds A, rank equals 11, otherwise any other letter equates to 10
             })
         })
     })
-    console.log(deck)
+    console.log(cards)
+    pullRandomCards(cards)
 }
 
 
-function render() {}
+function render() {
+}
 
+function pullRandomCards(cardArr) {
+    //sets loading animation
+    isLoading = true
+    //Gets random card and stores it in a variable
+    const card1 = Math.floor(Math.random() * cardArr.length)
+    cardArr.splice(card1, 1)
+    const card2 = Math.floor(Math.random() * cardArr.length)
+    cardArr.splice(card2, 1)
+    const card3 = Math.floor(Math.random() * cardArr.length)
+    cardArr.splice(card3, 1)
+    const card4 = Math.floor(Math.random() * cardArr.length)
+    cardArr.splice(card4, 1)
+    console.log(card1, card2, card3, card4)
+    console.log(cardArr)
 
+    playerHand = [cardArr[card1], cardArr[card2]]
+    dealerHand = [cardArr[card3], cardArr[card4]]
+    console.log(playerHand, dealerHand)
+}
 
 
 
