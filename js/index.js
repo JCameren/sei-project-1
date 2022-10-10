@@ -155,7 +155,7 @@ function hitPlayer() {
         acc += card.amount
         return acc
     }, 0)
-    pHandEl.innerText = `Your Hand: ${playerScore}`
+    pHandEl.innerText = `Player Hand: ${playerScore}`
     renderPlayerHand(playerHand)
 }
 
@@ -177,19 +177,23 @@ function checkHands() {
     dHandEl.innerText = `Dealer Hand: ${dealerScore}`
      console.log(dealerScore)
 
-
-    if (playerScore === BLACKJACK) {
+    if (playerScore === BLACKJACK && dealerScore === BLACKJACK) {
+        gameStatusEl.innerText = `It's a tie.`
+    } else if (playerScore === BLACKJACK) {
         wager *= 2.5
         gameStatusEl.innerText = `You got blackjack!`
     } else if  (playerScore > BLACKJACK) {
         gameStatusEl.innerText = `You busted. Dealer wins!`
-        wager *= 0.5
+        wager -= 50
     } else if (dealerScore > BLACKJACK) {
         gameStatusEl.innerText = `The dealer busted! You win!`
+        wager += 50
     } else if (playerScore > dealerScore) {
         gameStatusEl.innerText = `You win!`
+        wager += 50
     } else if (playerScore < dealerScore) {
         gameStatusEl.innerText = `Dealer wins!`
+        wager -= 50
     } else if (playerScore === dealerScore) {
         gameStatusEl.innerText = `It's a tie.`
     }
