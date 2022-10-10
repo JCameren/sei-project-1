@@ -27,7 +27,7 @@ html, body {
     justify-content: center;
 }
 
-.card .front {
+/* .card .front {
     position: absolute;
     transform: rotateY(180deg);
     backface-visibility: hidden;
@@ -47,5 +47,5 @@ html, body {
 
 .card:hover .back {
     transform: rotateY(-180deg);
-}
+} */
 

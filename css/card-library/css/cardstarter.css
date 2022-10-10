@@ -7,7 +7,7 @@
   /* Set the card's dimensions, and size it relative to
      it's font size. */
   font-size: inherit;
-  perspective: 1000px;
+  /* perspective: 1000px; */
   position: relative;
   width: 5em;
   height: 6.5em;

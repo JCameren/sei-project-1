@@ -10,12 +10,13 @@ const BODY = document.body
 
 
 /*<------------STATE VARIABLES----------->*/
-let isLoading //loading ui during ui renders
 let isGameOver // if wager drops to zero
 let wager //amount able to bet
 let deck
 let playerHand
+let playerScore
 let dealerHand
+let dealerScore
 let winner
 
 
@@ -26,6 +27,10 @@ let winner
 /*<------------CACHED ELEMENTS----------->*/
 const dealerEl = document.getElementById('dealer')
 const playerEl = document.getElementById('player')
+const resetBtn = document.getElementById('reset_btn')
+const hitBtn = document.getElementById('hit_btn')
+const standBtn = document.getElementById('stand_btn')
+const gameStatusEl = document.getElementById('game_status')
 
 
 
@@ -33,9 +38,9 @@ const playerEl = document.getElementById('player')
 
 
 /*<------------EVENT LISTENERS----------->*/
-
-
-
+resetBtn.addEventListener('click', init)
+hitBtn.addEventListener('click', hitPlayer)
+standBtn.addEventListener('click', checkHands)
 
 
 
@@ -45,6 +50,12 @@ const playerEl = document.getElementById('player')
 init()
 
 function init() {
+    dealerEl.innerHTML = null
+    playerEl.innerHTML = null
+    playerScore = 0
+    dealerScore = 0
+    gameStatusEl.innerText = `SEI Blackjack`
+    isGameOver = false
     wager = 100
     const cards = []
     SUITS.forEach((suit) => {
@@ -69,10 +80,7 @@ function render() {
 }
 
 function pullRandomCards(cardArr) {
-    //sets loading animation
-    isLoading = true
-    //Gets random card and stores it in a variable
- 
+    
     const card1 = Math.floor(Math.random() * cardArr.length)
     // cardArr.splice(card1, 1)
     const card2 = Math.floor(Math.random() * cardArr.length)
@@ -87,20 +95,14 @@ function pullRandomCards(cardArr) {
     playerHand = [cardArr[card1], cardArr[card2]]
     dealerHand = [cardArr[card3], cardArr[card4]]
 
-    console.log(playerHand)
+    console.log('1.playerHand',playerHand, '2.dealerHand', dealerHand)
 
     // renderDealerHand(dealerHand)
-    renderHands(playerHand, dealerHand)
+    renderDealerHand(dealerHand)
+    renderPlayerHand(playerHand)
 }
 
-function renderHands(playerArr, dealerArr) {
-    playerArr.forEach(card => {
-        const cardEl = document.createElement('div');
-        cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`
-        // cardEl.className = `card card large card ${card.face}`
-        console.log(cardEl)
-        playerEl.append(cardEl)
-    })
+function renderDealerHand(dealerArr) {
     dealerArr.forEach(card => {
         const cardEl = document.createElement('div');
         cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`
@@ -109,11 +111,62 @@ function renderHands(playerArr, dealerArr) {
     })
 }
 
+function renderPlayerHand(playerArr) {
+    playerArr.forEach(card => {
+        const cardEl = document.createElement('div');
+        cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`
+        console.log(cardEl)
+        playerEl.append(cardEl)
+    })
+}
+
+function hitPlayer() {
+    if (isGameOver) return
+    const cards = []
+    SUITS.forEach((suit) => {
+        RANKS.forEach((rank) => {
+            cards.push(
+                {
+                face: `${suit}${rank}`,
+                //taken from card ui project, Number fn,
+
+                // built-in JS Fn to parse integers
+                amount: Number(`${rank}`) || (rank === 'A' ? 11 : 10) //or operator to check if rank holds letter
+                //if rank holds A, rank equals 11, otherwise any other letter equates to 10
+            })
+        })
+    })
+    playerHand.push(cards[Math.floor(Math.random() * cards.length)])
+    renderPlayerHand(playerHand)
+}
 
 
-
-
-
-
-
-/*<------------GENERAL CHECKS----------->*/
+function checkHands() {
+    isGameOver = true
+    playerScore = playerHand.reduce((acc, card) => {
+        acc += card.amount
+        return acc
+    }, 0)
+    
+    console.log(playerScore)
+    
+    dealerScore = dealerHand.reduce((acc, card) => {
+        acc += card.amount
+        return acc
+    }, 0)
+    
+    console.log(dealerScore)
+    if (playerScore === BLACKJACK) {
+        wager *= 1.5
+        gameStatusEl.innerText = `You got blackjack!`
+    } else if  (playerScore > BLACKJACK) {
+        gameStatusEl.innerText = `You busted. Dealer wins!`
+        wager *= 0.5
+    } else if (dealerScore > BLACKJACK) {
+        gameStatusEl.innerText = `The dealer busted! You win!`
+    } else if (playerScore > dealerScore) {
+        gameStatusEl.innerText = `You win!`
+    } else if (playerScore < dealerScore) {
+        gameStatusEl.innerText = `Dealer wins!`
+    }
+}
