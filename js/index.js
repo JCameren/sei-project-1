@@ -212,11 +212,9 @@ function checkHands() {
     wagerEl.innerHTML = `Amount Remaining: $${wager}`
     if (wager <= 0) {
         wager = 0
-    } else if (wager === 0) {
         continueBtn.classList.add('disabled')
         standBtn.classList.add('disabled')
-        return
-    }
+    } 
     console.log(isGameOver)
     standBtn.removeEventListener('click', checkHands)
 }
