@@ -24,6 +24,10 @@ body {
     top: 1rem;
     left: 1rem;
 }
+
+.wager_el_container button {
+    margin: 1rem 0.75rem 1rem 0;
+}
 #wager_el {
     color: white;
 }
