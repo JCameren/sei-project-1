@@ -122,8 +122,8 @@ function renderPlayerHand(playerArr) {
 }
 
 function hitPlayer() {
-    playerEl.innerHTML = null
     if (isGameOver) return
+    playerEl.innerHTML = null
     const cards = []
     SUITS.forEach((suit) => {
         RANKS.forEach((rank) => {
@@ -156,8 +156,9 @@ function checkHands() {
         acc += card.amount
         return acc
     }, 0)
-    
-    console.log(dealerScore)
+     console.log(dealerScore)
+
+
     if (playerScore === BLACKJACK) {
         wager =  wager * 1.5
         gameStatusEl.innerText = `You got blackjack!`
