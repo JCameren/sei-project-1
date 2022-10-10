@@ -47,6 +47,14 @@ hitBtn.addEventListener('click', hitPlayer)
 standBtn.addEventListener('click', checkHands)
 continueBtn.addEventListener('click', continueGame)
 
+/*<------------GENERAL CHECKS----------->*/
+if (wager === 0) {
+    isGameOver = true
+}
+
+
+
+
 
 
 
@@ -54,7 +62,10 @@ continueBtn.addEventListener('click', continueGame)
 init()
 
 function init() {
+    standBtn.addEventListener('click', checkHands)
     hitBtn.classList.remove('disabled')
+    continueBtn.classList.remove('disabled')
+    standBtn.classList.remove('disabled')
     wager = 100
     playerScore = 0
     dealerScore = 0
@@ -199,15 +210,20 @@ function checkHands() {
     }
 
     wagerEl.innerHTML = `Amount Remaining: $${wager}`
-    if (wager < 0) {
+    if (wager <= 0) {
         wager = 0
+    } else if (wager === 0) {
+        continueBtn.classList.add('disabled')
+        standBtn.classList.add('disabled')
+        return
     }
     console.log(isGameOver)
-    return wager
+    standBtn.removeEventListener('click', checkHands)
 }
 
 function continueGame() {
     if (wager <= 0) return
+    standBtn.addEventListener('click', checkHands)
     hitBtn.classList.remove('disabled')
     playerScore = 0
     dealerScore = 0
@@ -235,9 +251,4 @@ function continueGame() {
     })
     console.log('1.Card Array', cards)
     pullRandomCards(cards)
-}
-
-/*<------------GENERAL CHECKS----------->*/
-if (wager === 0) {
-    isGameOver = true
 }

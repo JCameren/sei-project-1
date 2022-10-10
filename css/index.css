@@ -83,7 +83,7 @@ button {
   box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
   box-sizing: border-box;
   color: #39739d;
-  cursor: pointer;
+  cursor: pointer !important;
   display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
     sans-serif;
@@ -124,6 +124,7 @@ button:active {
     border-color: darkgrey;
     background-color: lightgrey;
     color: darkgray;
+    cursor: default;
 }
 
 .disabled:hover {
