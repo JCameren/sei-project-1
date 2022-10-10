@@ -31,6 +31,9 @@ const resetBtn = document.getElementById('reset_btn')
 const hitBtn = document.getElementById('hit_btn')
 const standBtn = document.getElementById('stand_btn')
 const gameStatusEl = document.getElementById('game_status')
+const wagerEl = document.getElementById('wager_el')
+const pHandEl = document.getElementById('player_hand')
+const dHandEl = document.getElementById('dealer_hand')
 
 
 
@@ -50,13 +53,17 @@ standBtn.addEventListener('click', checkHands)
 init()
 
 function init() {
-    dealerEl.innerHTML = null
-    playerEl.innerHTML = null
+    wager = 100
     playerScore = 0
     dealerScore = 0
+    dealerEl.innerHTML = null
+    playerEl.innerHTML = null
+    pHandEl.innerText = `Player Hand: ${playerScore}`
+    dHandEl.innerText = `Dealer Hand: ?`
+    hitBtn.style.visibility = 'visible'
+    wagerEl.innerText = `Amount Remaining: $${wager}`
     gameStatusEl.innerText = `SEI Blackjack`
     isGameOver = false
-    wager = 100
     const cards = []
     SUITS.forEach((suit) => {
         RANKS.forEach((rank) => {
@@ -93,6 +100,11 @@ function pullRandomCards(cardArr) {
     // console.log('2. New Card Array', cardArr)
 
     playerHand = [cardArr[card1], cardArr[card2]]
+    playerScore = playerHand.reduce((acc, card) => {
+        acc += card.amount
+        return acc
+    }, 0)
+    pHandEl.innerText = `Player Hand: ${playerScore}`
     dealerHand = [cardArr[card3], cardArr[card4]]
 
     console.log('1.playerHand',playerHand, '2.dealerHand', dealerHand)
@@ -139,11 +151,17 @@ function hitPlayer() {
         })
     })
     playerHand.push(cards[Math.floor(Math.random() * cards.length)])
+    playerScore = playerHand.reduce((acc, card) => {
+        acc += card.amount
+        return acc
+    }, 0)
+    pHandEl.innerText = `Your Hand: ${playerScore}`
     renderPlayerHand(playerHand)
 }
 
 
 function checkHands() {
+    hitBtn.style.visibility = 'hidden'
     isGameOver = true
     playerScore = playerHand.reduce((acc, card) => {
         acc += card.amount
@@ -156,11 +174,12 @@ function checkHands() {
         acc += card.amount
         return acc
     }, 0)
+    dHandEl.innerText = `Dealer Hand: ${dealerScore}`
      console.log(dealerScore)
 
 
     if (playerScore === BLACKJACK) {
-        wager =  wager * 1.5
+        wager *= 2.5
         gameStatusEl.innerText = `You got blackjack!`
     } else if  (playerScore > BLACKJACK) {
         gameStatusEl.innerText = `You busted. Dealer wins!`
@@ -175,7 +194,8 @@ function checkHands() {
         gameStatusEl.innerText = `It's a tie.`
     }
 
-    console.log(wager)
+    wagerEl.innerHTML = `Amount Remaining: $${wager}`
+    return wager
 }
 
 /*<------------GENERAL CHECKS----------->*/
