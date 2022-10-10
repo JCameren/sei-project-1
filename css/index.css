@@ -11,6 +11,7 @@ body {
   background: #171717;
   display: grid;
   place-items: center;
+  font-family: 'Metropolis';
   /* background-color: ; */
 }
 
@@ -18,11 +19,12 @@ body {
     color: white;
     margin-bottom: 4rem;
 }
-
-#wager_el {
+.wager_el_container {
     position: fixed;
     top: 1rem;
     left: 1rem;
+}
+#wager_el {
     color: white;
 }
 
@@ -98,6 +100,7 @@ button {
   touch-action: manipulation;
   vertical-align: baseline;
   white-space: nowrap;
+  transition: all 250ms ease-in-out;
 }
 
 button:hover,
@@ -114,4 +117,12 @@ button:active {
   background-color: #a0c7e4;
   box-shadow: none;
   color: #2c5777;
+}
+
+
+
+/*FONTS*/
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../assets/fonts/Metropolis\ Font\ family/Metropolis-Regular.otf');
 }

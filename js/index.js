@@ -62,7 +62,7 @@ function init() {
     dHandEl.innerText = `Dealer Hand: ?`
     hitBtn.style.visibility = 'visible'
     wagerEl.innerText = `Amount Remaining: $${wager}`
-    gameStatusEl.innerText = `SEI Blackjack`
+    gameStatusEl.innerText = `Hit or Stand`
     isGameOver = false
     const cards = []
     SUITS.forEach((suit) => {

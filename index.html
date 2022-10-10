@@ -9,14 +9,15 @@
     <title>Blackjack</title>
 </head>
 <body>
-    
-    <p id="wager_el">Wager: </p>
+    <div class="wager_el_container">
+        <p id="wager_el">Wager: </p>
+        <button id="reset_btn">Reset</button>
+    </div>
     <main id="board">
         <h1 id="game_status"></h1>
         <h2 id="dealer_hand" class="amount">Dealer Hand: ?</h2>
         <section id="dealer" class="hand"></section>
         <div class="btn_container">
-            <button id="reset_btn">Reset</button>
             <button id="hit_btn">Hit</button>
             <button id="stand_btn">Stand</button>
         </div>
