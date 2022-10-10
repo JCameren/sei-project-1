@@ -29,7 +29,7 @@ body {
 }
 
 #board {
-  min-width: 50%;
+  width: 50%;
   height: auto;
   border: 1px solid black;
   display: flex;
@@ -43,6 +43,7 @@ body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow-x: scroll;
 }
 
 .hand {
