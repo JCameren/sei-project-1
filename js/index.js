@@ -122,6 +122,7 @@ function renderPlayerHand(playerArr) {
 }
 
 function hitPlayer() {
+    playerEl.innerHTML = null
     if (isGameOver) return
     const cards = []
     SUITS.forEach((suit) => {
