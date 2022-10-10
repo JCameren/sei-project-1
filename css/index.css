@@ -110,7 +110,7 @@ button:focus {
   color: #2c5777;
 }
 
-button:focus {
+/* button:focus {
   box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
 }
 
@@ -118,9 +118,19 @@ button:active {
   background-color: #a0c7e4;
   box-shadow: none;
   color: #2c5777;
+} */
+
+.disabled {
+    border-color: darkgrey;
+    background-color: lightgrey;
+    color: darkgray;
 }
 
-
+.disabled:hover {
+    border-color: darkgrey;
+    background-color: lightgrey;
+    color: darkgray;
+}
 
 /*FONTS*/
 @font-face {

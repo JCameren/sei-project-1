@@ -45,7 +45,7 @@ const dHandEl = document.getElementById('dealer_hand')
 resetBtn.addEventListener('click', init)
 hitBtn.addEventListener('click', hitPlayer)
 standBtn.addEventListener('click', checkHands)
-
+continueBtn.addEventListener('click', continueGame)
 
 
 
@@ -54,6 +54,7 @@ standBtn.addEventListener('click', checkHands)
 init()
 
 function init() {
+    hitBtn.classList.remove('disabled')
     wager = 100
     playerScore = 0
     dealerScore = 0
@@ -159,7 +160,7 @@ function hitPlayer() {
 
 
 function checkHands() {
-    hitBtn.style.visibility = 'hidden'
+    hitBtn.classList.add('disabled')
     isGameOver = true
     playerScore = playerHand.reduce((acc, card) => {
         acc += card.amount
@@ -174,8 +175,9 @@ function checkHands() {
     }, 0)
     dHandEl.innerText = `Dealer Hand: ${dealerScore}`
      console.log(dealerScore)
-
-    if (playerScore === BLACKJACK && dealerScore === BLACKJACK) {
+    if (playerScore > BLACKJACK && dealerScore > BLACKJACK) {
+        gameStatusEl.innerText = `You both busted.`
+    } else if (playerScore === BLACKJACK && dealerScore === BLACKJACK) {
         gameStatusEl.innerText = `It's a tie.`
     } else if (playerScore === BLACKJACK) {
         wager *= 2.5
@@ -197,10 +199,43 @@ function checkHands() {
     }
 
     wagerEl.innerHTML = `Amount Remaining: $${wager}`
+    if (wager < 0) {
+        wager = 0
+    }
+    console.log(isGameOver)
     return wager
 }
 
-function continueGame() {}
+function continueGame() {
+    if (wager <= 0) return
+    hitBtn.classList.remove('disabled')
+    playerScore = 0
+    dealerScore = 0
+    dealerEl.innerHTML = null
+    playerEl.innerHTML = null
+    pHandEl.innerText = `Player Hand: ${playerScore}`
+    dHandEl.innerText = `Dealer Hand: ?`
+    hitBtn.style.visibility = 'visible'
+    wagerEl.innerText = `Amount Remaining: $${wager}`
+    gameStatusEl.innerText = `Hit or Stand`
+    isGameOver = false
+    const cards = []
+    SUITS.forEach((suit) => {
+        RANKS.forEach((rank) => {
+            cards.push(
+                {
+                face: `${suit}${rank}`,
+                //taken from card ui project, Number fn,
+
+                // built-in JS Fn to parse integers
+                amount: Number(`${rank}`) || (rank === 'A' ? 11 : 10) //or operator to check if rank holds letter
+                //if rank holds A, rank equals 11, otherwise any other letter equates to 10
+            })
+        })
+    })
+    console.log('1.Card Array', cards)
+    pullRandomCards(cards)
+}
 
 /*<------------GENERAL CHECKS----------->*/
 if (wager === 0) {
