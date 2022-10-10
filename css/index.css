@@ -1,28 +1,117 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100vh;
-    background: radial-gradient(circle, rgba(255,255,255,1) 33%, rgba(225,225,225,1) 56%);
-    display: grid;
-    place-items: center;
+html,
+body {
+  width: 100%;
+  height: 100vh;
+  background: #171717;
+  display: grid;
+  place-items: center;
+  /* background-color: ; */
+}
+
+#game_status {
+    color: white;
+    margin-bottom: 4rem;
+}
+
+#wager_el {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    color: white;
 }
 
 #board {
-    width: 80%;
-    height: 90%;
-    /* border: 1px solid black; */
+  min-width: 50%;
+  height: auto;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .hand {
-    width: 100%;
-    height: 50%;
-    /* border: 1px solid red; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  /* height: %; */
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#player {
+  margin-top: 10rem;
+}
+
+.amount {
+  text-align: center;
+  margin: 0.75rem 0 0.75rem 0;
+}
+
+.btn_container {
+  margin: auto;
+  position:relative;
+  top: 75px;
+  width: max-content;
+  /* text-align: center; */
+  backdrop-filter: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid black;
+  padding: 50px;
+}
+
+button {
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  /* line-height: 1.15385; */
+  margin: 0;
+  outline: none;
+  padding: 8px 0.8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+button:hover,
+button:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+button:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+}
+
+button:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
 }

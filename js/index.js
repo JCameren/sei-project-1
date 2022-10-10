@@ -177,3 +177,8 @@ function checkHands() {
 
     console.log(wager)
 }
+
+/*<------------GENERAL CHECKS----------->*/
+if (wager === 0) {
+    isGameOver = true
+}

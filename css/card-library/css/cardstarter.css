@@ -3,7 +3,7 @@
   box-sizing: border-box;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   display: inline-block;
-  margin: 5px 5px 50px 5px;
+  margin: 5px 5px 0 5px;
   cursor: pointer;
   /* Set the card's dimensions, and size it relative to
      it's font size. */
