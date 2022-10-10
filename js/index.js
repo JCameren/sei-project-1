@@ -113,11 +113,12 @@ function renderDealerHand(dealerArr) {
 
 function renderPlayerHand(playerArr) {
     playerArr.forEach(card => {
-        const cardEl = document.createElement('div');
-        cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`
-        console.log(cardEl)
+        const cardEl = document.createElement('div')
+        cardEl.innerHTML += `<div class="card card large ${card.face}"></div><div class="back"></div>`
+        console.log('Amount of divs',cardEl)
         playerEl.append(cardEl)
     })
+    console.log(playerArr)
 }
 
 function hitPlayer() {
@@ -157,7 +158,7 @@ function checkHands() {
     
     console.log(dealerScore)
     if (playerScore === BLACKJACK) {
-        wager *= 1.5
+        wager =  wager * 1.5
         gameStatusEl.innerText = `You got blackjack!`
     } else if  (playerScore > BLACKJACK) {
         gameStatusEl.innerText = `You busted. Dealer wins!`
@@ -168,5 +169,9 @@ function checkHands() {
         gameStatusEl.innerText = `You win!`
     } else if (playerScore < dealerScore) {
         gameStatusEl.innerText = `Dealer wins!`
+    } else if (playerScore === dealerScore) {
+        gameStatusEl.innerText = `It's a tie.`
     }
+
+    console.log(wager)
 }
