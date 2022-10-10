@@ -30,6 +30,7 @@ const playerEl = document.getElementById('player')
 const resetBtn = document.getElementById('reset_btn')
 const hitBtn = document.getElementById('hit_btn')
 const standBtn = document.getElementById('stand_btn')
+const continueBtn = document.getElementById('continue_btn')
 const gameStatusEl = document.getElementById('game_status')
 const wagerEl = document.getElementById('wager_el')
 const pHandEl = document.getElementById('player_hand')
@@ -82,9 +83,6 @@ function init() {
     pullRandomCards(cards)
 }
 
-
-function render() {
-}
 
 function pullRandomCards(cardArr) {
     
@@ -201,6 +199,8 @@ function checkHands() {
     wagerEl.innerHTML = `Amount Remaining: $${wager}`
     return wager
 }
+
+function continueGame() {}
 
 /*<------------GENERAL CHECKS----------->*/
 if (wager === 0) {
