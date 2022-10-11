@@ -21,20 +21,28 @@ body {
 }
 
 #game_status {
-    color: white;
+    color: #777777;
     margin-bottom: 4rem;
 }
 .wager_el_container {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 3.1rem;
+    left: 5rem;
+}
+
+#continue_btn {
+  background: linear-gradient(0deg, #7BE495 0%, #56c596 100%);
+}
+
+#reset_btn {
+  background: linear-gradient(0deg, #D09192 0%, #c82471 100%);
 }
 
 .wager_el_container button {
     margin: 1rem 0.75rem 1rem 0;
 }
 #wager_el {
-    color: white;
+    color: #777777;
 }
 
 #board {
@@ -71,6 +79,8 @@ body {
 .amount {
   text-align: center;
   margin: 0.75rem 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: #777777
 }
 
 .btn_container {
@@ -115,11 +125,10 @@ button {
 
 .disabled {
     border-color: darkgrey;
-    background: lightgrey;
     color: darkgray;
     box-shadow: inset 3px 3px 4px #9b9da3,
  inset -6px -1px 9px #ffaaff74;
- background: #dee2f1;
+ background: #dee2f1 !important;
 }
 
 .hidden {
