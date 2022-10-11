@@ -314,8 +314,8 @@
 .card.joker-red {
   background-image: url("../images/jokers/joker-red.svg"); }
 
-/* .card.back {
-  background-image: url("../images/backs/blue.svg"); }
+.card.back {
+  background-image: url("../images/backs/blue.svg") !important; }
 
 .card.back-blue {
   background-image: url("../images/backs/blue.svg"); }

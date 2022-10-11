@@ -130,6 +130,7 @@ function renderDealerHand(dealerArr) {
         cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`
         console.log(cardEl)
         dealerEl.append(cardEl)
+        dealerEl.children[0].classList.add('hidden')
     })
 }
 
@@ -172,6 +173,7 @@ function hitPlayer() {
 
 function checkHands() {
     hitBtn.classList.add('disabled')
+    dealerEl.children[0].classList.remove('hidden')
     isGameOver = true
     playerScore = playerHand.reduce((acc, card) => {
         acc += card.amount
