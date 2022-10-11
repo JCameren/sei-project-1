@@ -8,7 +8,7 @@ html,
 body {
   width: 100%;
   height: 100vh;
-  background: #171717;
+  background: #dee2f1;
   font-family: 'Metropolis';
   /* background-color: ; */
 }
@@ -40,15 +40,14 @@ body {
 #board {
   width: 50%;
   height: auto;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: -3px -4px 8px #ffaaff73,
+ 2px 2px 5px #9b9da3;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -81,70 +80,52 @@ body {
   flex-direction: column;
   width: max-content;
   /* text-align: center; */
-  backdrop-filter: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid black;
+  border-radius: 16px;
+  box-shadow: inset 3px 3px 4px #9b9da3,
+ inset -3px -3px 4px #ffaaff74;
+ background: #dee2f1;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 50px;
+}
+.btn_container > button {
+  text-transform: uppercase;
 }
 .btn_container > button:first-child{
   margin-bottom: 1rem;
 }
 
-
 button {
-    background-color: #e1ecf4;
-  border-radius: 3px;
-  border: 1px solid #7aa7c7;
-  box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #39739d;
-  cursor: pointer !important;
-  display: inline-block;
-  font-family: 'Metropolis';
-  font-size: 13px;
-  font-weight: 400;
-  /* line-height: 1.15385; */
-  margin: 0;
-  outline: none;
-  padding: 8px 0.8em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  /* background: #ad5389; */
+  background: linear-gradient(0deg, magenta 0%, #ffaaff74 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #ffaaff74;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
-  transition: all 250ms ease-in-out;
+  text-align: center;
+  justify-content: center;
 }
 
-/* button:hover,
-button:focus {
-  background-color: #b3d3ea;
-  color: #2c5777;
-} */
-
-/* button:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-}
-
-button:active {
-  background-color: #a0c7e4;
-  box-shadow: none;
-  color: #2c5777;
-} */
 
 .disabled {
     border-color: darkgrey;
-    background-color: lightgrey;
+    background: lightgrey;
     color: darkgray;
-    cursor: default;
-}
-
-.disabled:hover {
-    border-color: darkgrey;
-    background-color: lightgrey;
-    color: darkgray;
+    box-shadow: inset 3px 3px 4px #9b9da3,
+ inset -6px -6px 12px #ffaaff74;
+ background: #dee2f1;
 }
 
 /*FONTS*/
