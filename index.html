@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/card-library/css/cardstarter.css">
-    <link rel="stylesheet" href="css/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/card-library/css/cardstarter.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>Blackjack</title>
-</head>
-<body>
-    <div class="wager_el_container">
-        <p id="wager_el">Wager: </p>
+  </head>
+  <body>
+    <div class="gradient_circles_bg">
+      <div class="wager_el_container">
+        <p id="wager_el">Wager:</p>
         <button id="reset_btn">Reset</button>
         <button id="continue_btn">Continue</button>
-    </div>
-    <main id="board">
+      </div>
+      <main id="board">
         <h1 id="game_status"></h1>
         <h2 id="dealer_hand" class="amount">Dealer Hand: ?</h2>
         <section id="dealer" class="hand"></section>
         <div class="btn_container">
-            <button id="hit_btn">Hit</button>
-            <button id="stand_btn">Stand</button>
+          <button id="hit_btn">Hit</button>
+          <button id="stand_btn">Stand</button>
         </div>
         <section id="player" class="hand"></section>
         <h2 id="player_hand" class="amount">Your hand: ?</h2>
-    </main>
+      </main>
+    </div>
     <script src="js/index.js"></script>
-</body>
+  </body>
 </html>
