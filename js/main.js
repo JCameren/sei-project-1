@@ -119,7 +119,7 @@ function pullRandomCards(cardArr) {
   renderDealerHand(dealerHand);
   renderPlayerHand(playerHand);
   if (playerScore >= BLACKJACK) {
-    checkHands()
+    checkHands();
   }
 }
 
@@ -172,9 +172,9 @@ function hitPlayer() {
   pHandEl.innerText = `Player Hand: ${playerScore}`;
   renderPlayerHand(playerHand);
 
-    if (playerScore >= BLACKJACK) {
-      checkHands()
-    }
+  if (playerScore >= BLACKJACK) {
+    checkHands();
+  }
 }
 
 function checkHands() {
@@ -222,9 +222,9 @@ function checkHands() {
   wagerEl.innerHTML = `Amount Remaining: $${wager}`;
   if (wager <= 0) {
     wager = 0;
-    wagerEl.innerText = `Amount Remaining: $${wager}`
-    gameStatusEl.innerText = `Game Over.`
-    continueBtn.classList.add("disabled");
+    wagerEl.innerText = `Amount Remaining: $${wager}`;
+    gameStatusEl.innerText = `Game Over.`;
+    // continueBtn.classList.add("disabled");
     standBtn.classList.add("disabled");
   }
   console.log(isGameOver);
@@ -238,7 +238,7 @@ function continueGame() {
   if (wager <= 0) {
     wager = 0;
     gameStatusEl.innerText = `Game Over!`;
-    wagerEl.innerText = `Amount Remaining: ${wager}`;
+    wagerEl.innerText = `Amount Remaining: $${wager}`;
     isGameOver = true;
     return;
   } //wont work if the player has no money
