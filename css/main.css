@@ -31,11 +31,11 @@ body {
 }
 
 #continue_btn {
-  background: linear-gradient(0deg, #7BE495 0%, #56c596 100%);
+  background: linear-gradient(0deg, #56c596 0%, #7BE495 100%);
 }
 
 #reset_btn {
-  background: linear-gradient(0deg, #D09192 0%, #c82471 100%);
+  background: linear-gradient(0deg, #c82471 0%, #D09192 100%);
 }
 
 .wager_el_container button {
