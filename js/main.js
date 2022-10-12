@@ -1,6 +1,6 @@
 /*<------------CONSTANTS----------->*/
-const BLACKJACK = 21;
-const SUITS = ["s", "c", "d", "h"];
+const BLACKJACK = 21; //var that holds number ref
+const SUITS = ["s", "c", "d", "h"]; //array to hold suits for iteration
 const RANKS = [
   "02",
   "03",
@@ -15,18 +15,16 @@ const RANKS = [
   "Q",
   "K",
   "A",
-];
+]; //array to hold numbers for iteration
 const BODY = document.body;
 
 /*<------------STATE VARIABLES----------->*/
 let isGameOver; // if wager drops to zero
 let wager; //amount able to bet
-let deck;
-let playerHand;
-let playerScore;
-let dealerHand;
-let dealerScore;
-let winner;
+let playerHand; //will be array holding player card objects
+let playerScore; //value sum of amount prop
+let dealerHand; // will be arr holding dealer card objects
+let dealerScore; //value sum of amount prop
 
 /*<------------CACHED ELEMENTS----------->*/
 const dealerEl = document.getElementById("dealer");
@@ -44,7 +42,7 @@ const dHandEl = document.getElementById("dealer_hand");
 resetBtn.addEventListener("click", init);
 hitBtn.addEventListener("click", hitPlayer);
 standBtn.addEventListener("click", checkHands);
-continueBtn.addEventListener("click", continueGame);
+// continueBtn.addEventListener("click", continueGame);
 
 /*<------------GENERAL CHECKS----------->*/
 if (wager === 0) {
@@ -55,15 +53,20 @@ if (wager === 0) {
 init();
 
 function init() {
+  //adds the listener back if it is removed upon initializing
   standBtn.addEventListener("click", checkHands);
+  //removes disabled class if appended upon init
   hitBtn.classList.remove("disabled");
-  continueBtn.classList.remove("disabled");
+  //removes disabled class if appended upon init
+  // continueBtn.classList.remove("disabled");
+  //removes disabled class if appended upon init
   standBtn.classList.remove("disabled");
+  //init monies to 100
   wager = 100;
-  playerScore = 0;
-  dealerScore = 0;
-  dealerEl.innerHTML = null;
-  playerEl.innerHTML = null;
+  playerScore = 0; //inits pScore to 0
+  dealerScore = 0; //inits dScore to 0
+  dealerEl.innerHTML = null; //makes div empty so that re-renders are clean with no elements repeating, very important
+  playerEl.innerHTML = null; //makes div empty so that re-renders are clean with no elements repeating, very important
   pHandEl.innerText = `Player Hand: ${playerScore}`;
   dHandEl.innerText = `Dealer Hand: ?`;
   hitBtn.style.visibility = "visible";
@@ -88,56 +91,57 @@ function init() {
 }
 
 function pullRandomCards(cardArr) {
+  //These are the cards both players will start off with
   const card1 = Math.floor(Math.random() * cardArr.length);
-  // cardArr.splice(card1, 1)
   const card2 = Math.floor(Math.random() * cardArr.length);
-  // cardArr.splice(card2, 1)
   const card3 = Math.floor(Math.random() * cardArr.length);
-  // cardArr.splice(card3, 1)
   const card4 = Math.floor(Math.random() * cardArr.length);
-  // cardArr.splice(card4, 1)
   console.log(card1, card2, card3, card4);
-  // console.log('2. New Card Array', cardArr)
 
-  playerHand = [cardArr[card1], cardArr[card2]];
+  playerHand = [cardArr[card1], cardArr[card2]]; //first 2 are put into the pHand, pHand becomes an arr
+  //use the reduce method to obtain the value sum of each card obj
   playerScore = playerHand.reduce((acc, card) => {
     acc += card.amount;
     return acc;
   }, 0);
   pHandEl.innerText = `Player Hand: ${playerScore}`;
-  dealerHand = [cardArr[card3], cardArr[card4]];
+
+  dealerHand = [cardArr[card3], cardArr[card4]]; //last 2 are placed in pHand, also now an arr
 
   console.log("1.playerHand", playerHand, "2.dealerHand", dealerHand);
-
-  // renderDealerHand(dealerHand)
+  //The render functions are invoked using both arrs as arguments
   renderDealerHand(dealerHand);
   renderPlayerHand(playerHand);
 }
 
 function renderDealerHand(dealerArr) {
+  //forEach method used on param
   dealerArr.forEach((card) => {
-    const cardEl = document.createElement("div");
+    const cardEl = document.createElement("div"); //creates a div for that card obj
+    //the card then gets inner html using the face prop from the card obj which will then match with existing css classes ready in the css file
     cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`;
     console.log(cardEl);
-    dealerEl.append(cardEl);
-    dealerEl.children[0].classList.add("hidden");
+    dealerEl.append(cardEl); //adds this to the container, thus the DOM
+    dealerEl.children[0].classList.add("hidden"); //first card will be hidden from player
   });
 }
 
 function renderPlayerHand(playerArr) {
+  //forEach method used on param
   playerArr.forEach((card) => {
-    const cardEl = document.createElement("div");
+    const cardEl = document.createElement("div"); //creates a div for that card obj
+    //the card then gets inner html using the face prop from the card obj which will then match with existing css classes ready in the css file
     cardEl.innerHTML += `<div class="card card large ${card.face}"></div><div class="back"></div>`;
     console.log("Amount of divs", cardEl);
-    playerEl.append(cardEl);
+    playerEl.append(cardEl); //adds this to the container, thus the DOM
   });
   console.log(playerArr);
 }
 
 function hitPlayer() {
-  if (isGameOver) return;
-  playerEl.innerHTML = null;
-  const cards = [];
+  if (isGameOver) return; //button will not work if the boolean is true
+  playerEl.innerHTML = null; //resets DOM so there are no repating cards, VERY important
+  const cards = []; //creates new deck to pick a card obj from
   SUITS.forEach((suit) => {
     RANKS.forEach((rank) => {
       cards.push({
@@ -150,27 +154,31 @@ function hitPlayer() {
       });
     });
   });
-  playerHand.push(cards[Math.floor(Math.random() * cards.length)]);
+  playerHand.push(cards[Math.floor(Math.random() * cards.length)]); //pushes new card obj from card arr into playerHand arr
   playerScore = playerHand.reduce((acc, card) => {
     acc += card.amount;
     return acc;
-  }, 0);
+  }, 0); //reduce method to iterate over amount prop to get value sum
   pHandEl.innerText = `Player Hand: ${playerScore}`;
   renderPlayerHand(playerHand);
+  if (playerScore >= BLACKJACK) {
+    checkHands();
+  }
 }
 
 function checkHands() {
-  standBtn.classList.add("disabled");
-  hitBtn.classList.add("disabled");
-  dealerEl.children[0].classList.remove("hidden");
+  standBtn.classList.add("disabled"); //shows player clicks wont work
+  hitBtn.classList.add("disabled"); //shows player clicks wont work
+  dealerEl.children[0].classList.remove("hidden"); //reveals hidden dealer card to player
   isGameOver = true;
+  //reduce method to find value of cards in arr from the amount prop in card obj
   playerScore = playerHand.reduce((acc, card) => {
     acc += card.amount;
     return acc;
   }, 0);
 
   console.log(playerScore);
-
+  //reduce method to find value of cards in arr from the amount prop in card obj
   dealerScore = dealerHand.reduce((acc, card) => {
     acc += card.amount;
     return acc;
@@ -208,10 +216,13 @@ function checkHands() {
   }
   console.log(isGameOver);
   standBtn.removeEventListener("click", checkHands);
+  setTimeout(() => {
+    continueGame();
+  }, 2000);
 }
 
 function continueGame() {
-  if (wager <= 0) return;
+  if (wager <= 0) return; //wont work if the player has no money
   standBtn.addEventListener("click", checkHands);
   standBtn.classList.remove("disabled");
   hitBtn.classList.remove("disabled");
