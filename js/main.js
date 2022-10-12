@@ -16,7 +16,6 @@ const RANKS = [
   "K",
   "A",
 ]; //array to hold numbers for iteration
-// const BODY = document.body;
 
 /*<------------STATE VARIABLES----------->*/
 let isGameOver; // if wager drops to zero
@@ -32,7 +31,6 @@ const playerEl = document.getElementById("player");
 const resetBtn = document.getElementById("reset_btn");
 const hitBtn = document.getElementById("hit_btn");
 const standBtn = document.getElementById("stand_btn");
-// const continueBtn = document.getElementById("continue_btn");
 const gameStatusEl = document.getElementById("game_status");
 const wagerEl = document.getElementById("wager_el");
 const pHandEl = document.getElementById("player_hand");
