@@ -222,7 +222,12 @@ function checkHands() {
 }
 
 function continueGame() {
-  if (wager <= 0) return; //wont work if the player has no money
+  if (wager <= 0) {
+    gameStatusEl.innerText = `Game Over!`
+    wagerEl.innerText = `Amount Remaining: $0`
+    isGameOver = true
+    return
+  }; //wont work if the player has no money
   standBtn.addEventListener("click", checkHands);
   standBtn.classList.remove("disabled");
   hitBtn.classList.remove("disabled");
