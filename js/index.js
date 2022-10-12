@@ -160,6 +160,7 @@ function hitPlayer() {
 }
 
 function checkHands() {
+  standBtn.classList.add("disabled");
   hitBtn.classList.add("disabled");
   dealerEl.children[0].classList.remove("hidden");
   isGameOver = true;
@@ -176,7 +177,7 @@ function checkHands() {
   }, 0);
   dHandEl.innerText = `Dealer Hand: ${dealerScore}`;
   console.log(dealerScore);
-   if (playerScore > BLACKJACK && dealerScore > BLACKJACK) {
+  if (playerScore > BLACKJACK && dealerScore > BLACKJACK) {
     gameStatusEl.innerText = `You both busted.`;
   } else if (playerScore === BLACKJACK && dealerScore === BLACKJACK) {
     gameStatusEl.innerText = `It's a tie.`;
@@ -212,6 +213,7 @@ function checkHands() {
 function continueGame() {
   if (wager <= 0) return;
   standBtn.addEventListener("click", checkHands);
+  standBtn.classList.remove("disabled");
   hitBtn.classList.remove("disabled");
   playerScore = 0;
   dealerScore = 0;
