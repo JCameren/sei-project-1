@@ -16,7 +16,7 @@ const RANKS = [
   "K",
   "A",
 ]; //array to hold numbers for iteration
-const BODY = document.body;
+// const BODY = document.body;
 
 /*<------------STATE VARIABLES----------->*/
 let isGameOver; // if wager drops to zero
@@ -32,7 +32,7 @@ const playerEl = document.getElementById("player");
 const resetBtn = document.getElementById("reset_btn");
 const hitBtn = document.getElementById("hit_btn");
 const standBtn = document.getElementById("stand_btn");
-const continueBtn = document.getElementById("continue_btn");
+// const continueBtn = document.getElementById("continue_btn");
 const gameStatusEl = document.getElementById("game_status");
 const wagerEl = document.getElementById("wager_el");
 const pHandEl = document.getElementById("player_hand");
@@ -88,6 +88,12 @@ function init() {
   });
   console.log("1.Card Array", cards);
   pullRandomCards(cards);
+
+  setTimeout(() => {
+    if (playerHand === BLACKJACK) {
+      checkHands();
+    }
+  }, 1500);
 }
 
 function pullRandomCards(cardArr) {
@@ -112,14 +118,18 @@ function pullRandomCards(cardArr) {
   //The render functions are invoked using both arrs as arguments
   renderDealerHand(dealerHand);
   renderPlayerHand(playerHand);
+  if (playerScore >= BLACKJACK) {
+    checkHands()
+  }
 }
 
 function renderDealerHand(dealerArr) {
   //forEach method used on param
   dealerArr.forEach((card) => {
     const cardEl = document.createElement("div"); //creates a div for that card obj
+    // cardEl.classList.add(`card card back large ${card.face}`)
     //the card then gets inner html using the face prop from the card obj which will then match with existing css classes ready in the css file
-    cardEl.innerHTML = `<div class="card card large ${card.face}"></div><div class="back"></div>`;
+    cardEl.innerHTML = `<div class="card card large ${card.face}"></div>`;
     console.log(cardEl);
     dealerEl.append(cardEl); //adds this to the container, thus the DOM
     dealerEl.children[0].classList.add("hidden"); //first card will be hidden from player
@@ -161,9 +171,10 @@ function hitPlayer() {
   }, 0); //reduce method to iterate over amount prop to get value sum
   pHandEl.innerText = `Player Hand: ${playerScore}`;
   renderPlayerHand(playerHand);
-  if (playerScore >= BLACKJACK) {
-    checkHands();
-  }
+
+    if (playerScore >= BLACKJACK) {
+      checkHands()
+    }
 }
 
 function checkHands() {
@@ -211,6 +222,8 @@ function checkHands() {
   wagerEl.innerHTML = `Amount Remaining: $${wager}`;
   if (wager <= 0) {
     wager = 0;
+    wagerEl.innerText = `Amount Remaining: $${wager}`
+    gameStatusEl.innerText = `Game Over.`
     continueBtn.classList.add("disabled");
     standBtn.classList.add("disabled");
   }
@@ -223,11 +236,12 @@ function checkHands() {
 
 function continueGame() {
   if (wager <= 0) {
-    gameStatusEl.innerText = `Game Over!`
-    wagerEl.innerText = `Amount Remaining: $0`
-    isGameOver = true
-    return
-  }; //wont work if the player has no money
+    wager = 0;
+    gameStatusEl.innerText = `Game Over!`;
+    wagerEl.innerText = `Amount Remaining: ${wager}`;
+    isGameOver = true;
+    return;
+  } //wont work if the player has no money
   standBtn.addEventListener("click", checkHands);
   standBtn.classList.remove("disabled");
   hitBtn.classList.remove("disabled");
