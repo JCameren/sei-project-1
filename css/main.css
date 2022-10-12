@@ -1,9 +1,11 @@
+/*<-------GlOBAL RESET------->*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/*<-------GlOBAL STYLING------->*/
 html,
 body {
   width: 100%;
@@ -20,20 +22,25 @@ body {
   place-items: center;
 }
 
+/*<-------TOP HEADING INDICATING GAME OUTCOME------->*/
 #game_status {
     color: #777777;
     margin-bottom: 4rem;
 }
+
+/*<-------SECTION HOLDING MONEY OWNED, RESET BUTTON, & GREEN BUTTON------->*/
 .wager_el_container {
     position: fixed;
     top: 3.1rem;
     left: 5rem;
 }
 
+/*GREEN BUTTON*/
 #continue_btn {
   background: linear-gradient(0deg, #56c596 0%, #7BE495 100%);
 }
 
+/*RED BUTTON*/
 #reset_btn {
   background: linear-gradient(0deg, #c82471 0%, #D09192 100%);
 }
@@ -45,6 +52,7 @@ body {
     color: #777777;
 }
 
+/*<-------CONTAINER THAT HOLDS BOTH PLAYERS HANDS------->*/
 #board {
   width: 50%;
   height: auto;
@@ -63,10 +71,9 @@ body {
   border-radius: 10px;
 }
 
+/*DIV HOLD EACH INDIVIDUAL HAND*/
 .hand {
   width: 100%;
-  /* height: %; */
-  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,6 +83,7 @@ body {
   margin-top: 10rem;
 }
 
+/*HEADER THAT HOLDS CARD VALUE*/
 .amount {
   text-align: center;
   margin: 0.75rem 0 0.75rem 0;
@@ -83,6 +91,7 @@ body {
   color: #777777
 }
 
+/*<-------HOLDS HIT OR STAND BUTTONS------->*/
 .btn_container {
   margin: auto;
   position:relative;
@@ -100,6 +109,7 @@ body {
   margin-bottom: 1rem;
 }
 
+/*<-------GENERAL STYLING FOR BUTTONS------->*/
 button {
   display: inline-flex;
   align-items: center;
@@ -122,7 +132,9 @@ button {
   justify-content: center;
 }
 
+/*<-------OTHER CLASSES------->*/
 
+/*DISABLED CLASS TO APPEND*/
 .disabled {
     border-color: darkgrey;
     color: darkgray;
@@ -132,6 +144,8 @@ button {
  cursor: not-allowed !important;
 }
 
+
+/*HIDDEN CLASS TO APPEND*/
 .hidden {
   visibility: hidden;
 }
