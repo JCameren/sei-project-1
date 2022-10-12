@@ -58,7 +58,7 @@ function init() {
   //removes disabled class if appended upon init
   hitBtn.classList.remove("disabled");
   //removes disabled class if appended upon init
-  // continueBtn.classList.remove("disabled");
+  resetBtn.classList.remove('pulse')
   //removes disabled class if appended upon init
   standBtn.classList.remove("disabled");
   //init monies to 100
@@ -91,6 +91,7 @@ function init() {
 
   setTimeout(() => {
     if (playerHand === BLACKJACK) {
+      wager *= 2.5;
       checkHands();
     }
   }, 1500);
@@ -237,8 +238,9 @@ function checkHands() {
 function continueGame() {
   if (wager <= 0) {
     wager = 0;
-    gameStatusEl.innerText = `Game Over!`;
+    gameStatusEl.innerText = `Game Over.`;
     wagerEl.innerText = `Amount Remaining: $${wager}`;
+    resetBtn.classList.add('pulse')
     isGameOver = true;
     return;
   } //wont work if the player has no money

@@ -131,7 +131,7 @@ button {
   justify-content: center;
 }
 
-/*<-------OTHER CLASSES------->*/
+/*<-------MISC CLASSES------->*/
 
 /*DISABLED CLASS TO APPEND*/
 .disabled {
@@ -141,6 +141,12 @@ button {
  inset -6px -1px 9px #ffaaff74;
  background: #dee2f1 !important;
  cursor: not-allowed !important;
+}
+
+.pulse {
+  background: rgba(255, 82, 82, 1);
+  box-shadow: 0 0 0 0 rgba(255, 82, 82, 1);
+  animation: pulse 2s infinite;
 }
 
 
@@ -153,4 +159,22 @@ button {
 @font-face {
     font-family: 'Metropolis';
     src: url('../assets/fonts/Metropolis\ Font\ family/Metropolis-Regular.otf');
+}
+
+/*ANIMATIONS*/
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
 }
