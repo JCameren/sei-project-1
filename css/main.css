@@ -71,6 +71,9 @@ body {
   overflow-x: scroll;
   border-radius: 10px;
 }
+.bet_options {
+  color: #777777;
+}
 
 #bet_container {
   margin-top: 2rem;
