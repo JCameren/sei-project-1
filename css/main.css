@@ -10,45 +10,48 @@ html,
 body {
   width: 100%;
   height: 100vh;
+  display: grid;
+  place-items: center;
   background: #dee2f1;
-  font-family: 'Metropolis';
+  font-family: "Metropolis";
 }
 
 .gradient_circles_bg {
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: grid;
   place-items: center;
 }
 
 /*<-------TOP HEADING INDICATING GAME OUTCOME------->*/
 #game_status {
-    color: #777777;
-    margin-bottom: 4rem;
+  color: #777777;
+  margin-bottom: 4rem;
 }
 
 /*<-------SECTION HOLDING MONEY OWNED, RESET BUTTON, & GREEN BUTTON------->*/
-.wager_el_container {
-    position: fixed;
-    top: 3.1rem;
-    left: 5rem;
+.bank_roll_container {
+  position: fixed;
+  top: 3.1rem;
+  left: 5rem;
 }
 
 /*GREEN BUTTON*/
 #continue_btn {
-  background: linear-gradient(0deg, #56c596 0%, #7BE495 100%);
+  background: linear-gradient(0deg, #56c596 0%, #7be495 100%);
 }
 
 /*RED BUTTON*/
 #reset_btn {
-  background: linear-gradient(0deg, #c82471 0%, #D09192 100%);
+  background: linear-gradient(0deg, #c82471 0%, #d09192 100%);
 }
 
-.wager_el_container button {
-    margin: 1rem 0.75rem 1rem 0;
+.bank_roll_container button {
+  margin: 1rem 0.75rem 1rem 0;
 }
-#wager_el {
-    color: #777777;
+
+#bank_el {
+  color: #777777;
 }
 
 /*<-------CONTAINER THAT HOLDS BOTH PLAYERS HANDS------->*/
@@ -61,13 +64,40 @@ body {
   justify-content: space-between;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.35);
-  box-shadow: -3px -4px 8px #ffaaff73,
- 2px 2px 5px #9b9da3;
+  box-shadow: -3px -4px 8px #ffaaff73, 2px 2px 5px #9b9da3;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   overflow-x: scroll;
   border-radius: 10px;
+}
+
+#bet_container {
+  margin-top: 2rem;
+}
+
+#bet_amount_input {
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  border-radius: 50px;
+  border: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  caret-color: magenta;
+}
+
+#bet_amount_input:focus,
+#bet_amount_input:valid {
+  border: 1px solid magenta;
+}
+
+#bet_amount_input::placeholder {
+  color: #c4c4c4;
+}
+
+#bet_submit_btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /*DIV HOLD EACH INDIVIDUAL HAND*/
@@ -87,13 +117,13 @@ body {
   text-align: center;
   margin: 0.75rem 0 0.75rem 0;
   font-size: 0.95rem;
-  color: #777777
+  color: #777777;
 }
 
 /*<-------HOLDS HIT OR STAND BUTTONS------->*/
 .btn_container {
   margin: auto;
-  position:relative;
+  position: relative;
   top: 75px;
   display: flex;
   flex-direction: column;
@@ -103,7 +133,7 @@ body {
 .btn_container > button {
   text-transform: uppercase;
 }
-.btn_container > button:first-child{
+.btn_container > button:first-child {
   margin-bottom: 1rem;
 }
 
@@ -133,12 +163,11 @@ button {
 
 /*DISABLED CLASS TO APPEND*/
 .disabled {
-    border-color: darkgrey;
-    color: darkgray;
-    box-shadow: inset 3px 3px 4px #9b9da3,
- inset -6px -1px 9px #ffaaff74;
- background: #dee2f1 !important;
- cursor: not-allowed !important;
+  border-color: darkgrey;
+  color: darkgray;
+  box-shadow: inset 3px 3px 4px #9b9da3, inset -6px -1px 9px #ffaaff74;
+  background: #dee2f1 !important;
+  cursor: not-allowed !important;
 }
 
 .pulse {
@@ -147,7 +176,6 @@ button {
   animation: pulse 2s infinite;
 }
 
-
 /*HIDDEN CLASS TO APPEND*/
 .hidden {
   visibility: hidden;
@@ -155,8 +183,8 @@ button {
 
 /*FONTS*/
 @font-face {
-    font-family: 'Metropolis';
-    src: url('../assets/fonts/Metropolis\ Font\ family/Metropolis-Regular.otf');
+  font-family: "Metropolis";
+  src: url("../assets/fonts/Metropolis\ Font\ family/Metropolis-Regular.otf");
 }
 
 /*ANIMATIONS*/
@@ -165,12 +193,12 @@ button {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
   }
-  
+
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 10px rgba(255, 82, 82, 0);
   }
-  
+
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
