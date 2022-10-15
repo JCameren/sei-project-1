@@ -97,7 +97,7 @@ function init() {
 
   pullRandomCards(cards);
   renderBet();
-  // bankRollEl.innerText = bankRoll
+  bankRollEl.innerText = bankRoll
 }
 
 function cacheBet() {
@@ -115,7 +115,7 @@ function cacheBet() {
   }
   betSubmitBtn.classList.add("disabled");
   console.log(bet);
-  betInputEl.value = "";
+  betInputEl.value = null;
   console.log(bet);
   betSubmitBtn.disabled = true;
   standBtn.addEventListener("click", checkHands);
@@ -231,7 +231,7 @@ function checkHands() {
   } else if (playerScore === BLACKJACK && dealerScore === BLACKJACK) {
     gameStatusEl.innerText = `It's a tie.`;
   } else if (playerScore === BLACKJACK) {
-    bankRoll += Number(bet) * 2.5;
+    bankRoll += Number(bet) * 1.5;
     gameStatusEl.innerText = `You got blackjack!`;
   } else if (playerScore > BLACKJACK) {
     gameStatusEl.innerText = `You busted. Dealer wins!`;
