@@ -31,7 +31,7 @@
      droppable place, like an empty pile. */ }
   
   .card.large {
-    font-size: 26px; }
+    font-size: 2vmin; }
 
 .card.diamonds.A,
 .card.dA,
