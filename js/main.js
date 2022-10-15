@@ -114,9 +114,7 @@ function cacheBet() {
     return;
   }
   betSubmitBtn.classList.add("disabled");
-  console.log(bet);
   betInputEl.value = null;
-  console.log(bet);
   betSubmitBtn.disabled = true;
   standBtn.addEventListener("click", checkHands);
   standBtn.classList.remove("disabled");
