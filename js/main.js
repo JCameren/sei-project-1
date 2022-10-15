@@ -126,6 +126,7 @@ function cacheBet() {
 
 function renderBet() {
   alertEl.style.visibility = "hidden";
+  betInputEl.value = null
   wageredEl.innerText = bet;
   bankRollEl.innerText = bankRoll;
 }
