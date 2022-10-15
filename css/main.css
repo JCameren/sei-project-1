@@ -73,6 +73,9 @@ body {
   overflow-x: scroll;
   border-radius: 10px;
 }
+
+/*BET CONTAINER*/
+
 .bet_options {
   color: #777777;
 }
@@ -104,6 +107,16 @@ body {
 #bet_submit_btn {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+#alert_el {
+  font-size: 1.75vmin;
+  background-color: salmon;
+  color: red;
+  border: 1px solid red;
+  border-radius: 4px;
+  width: max-content;
+  padding: 0.75vmin;
 }
 
 /*DIV HOLD EACH INDIVIDUAL HAND*/

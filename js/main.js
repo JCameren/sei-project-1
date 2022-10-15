@@ -38,6 +38,7 @@ const bankEl = document.getElementById("bank_el");
 const bankRollEl = document.getElementById("amount_owned");
 const betInputEl = document.getElementById("bet_amount_input");
 const wageredEl = document.getElementById("amount_wagered");
+const alertEl = document.getElementById("alert_el");
 const pHandEl = document.getElementById("player_hand");
 const dHandEl = document.getElementById("dealer_hand");
 
@@ -101,8 +102,17 @@ function init() {
 
 function cacheBet() {
   bet = betInputEl.value;
-  if (!Number(bet)) return;
-  if (bet > bankRoll) return;
+  if (!Number(bet)) {
+    alertEl.style.visibility = "visible";
+    alertEl.innerText = "Bet must be a number.";
+    betInputEl.value = "";
+    return;
+  } else if (bet > bankRoll) {
+    alertEl.style.visibility = "visible";
+    alertEl.innerText = "Bet cannot be greater than bankroll.";
+    betInputEl.value = "";
+    return;
+  }
   betSubmitBtn.classList.add("disabled");
   console.log(bet);
   betInputEl.value = "";
@@ -117,6 +127,12 @@ function cacheBet() {
 }
 
 function renderBet() {
+  if (bet > bankRoll) {
+    alertEl.style.visibility = "visible";
+    alert.innerText = "Bet cannot exceed current amount held!";
+    return;
+  }
+  alertEl.style.visibility = "hidden";
   wageredEl.innerText = bet;
   bankRollEl.innerText = bankRoll;
 }
