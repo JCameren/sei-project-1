@@ -33,10 +33,11 @@ to get the user's attention.
 
 1. Definitely responsiveness. I definitely took a lot of time to make sure the game logic was at MVP before the deadline approached and didn't really
 get into breakpoints and media queries. It's really only meant for desktops amd laptop viewports. So re-visiting this and using some responsive
-units or media queries would elevate this project.
+units or media queries would elevate this project.(*COMPLETED*)
 
 2. Ace Card Value: In the app, the ace card is set only to hold a value of 11. I think adding a feature to make it toggle between two values depending on the hand
 would complete this from a logic perspective.
 
 3. Input Alert: A feature to improve the UX aspect would be to alert the user to their input error. For example, if the user entered a number greater
 than whats in their bank, an alert in the DOM would appear and read as that. And if their bet input was not a number, it would read as that as well.
+(*COMPLETED*)
