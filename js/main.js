@@ -127,11 +127,6 @@ function cacheBet() {
 }
 
 function renderBet() {
-  if (bet > bankRoll) {
-    alertEl.style.visibility = "visible";
-    alert.innerText = "Bet cannot exceed current amount held!";
-    return;
-  }
   alertEl.style.visibility = "hidden";
   wageredEl.innerText = bet;
   bankRollEl.innerText = bankRoll;
@@ -264,7 +259,7 @@ function checkHands() {
   setTimeout(() => {
     continueGame();
   }, 2000);
-  renderBet();
+  // renderBet();
 }
 
 function continueGame() {
