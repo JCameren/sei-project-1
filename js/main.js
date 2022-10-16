@@ -151,7 +151,7 @@ function pullRandomCards(cardArr) {
   //The render functions are invoked using both arrs as arguments
   renderDealerHand(dealerHand);
   renderPlayerHand(playerHand);
-  if (playerScore >= BLACKJACK) {
+  if (playerScore > BLACKJACK) {
     checkHands();
   }
 }
